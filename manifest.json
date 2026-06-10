@@ -1,0 +1,16 @@
+{
+  "name": "Fluxo de Caixa",
+  "short_name": "Financeiro",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0f1115",
+  "theme_color": "#4da3ff",
+  "description": "Melhor cartão para comprar hoje",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
