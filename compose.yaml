@@ -1,0 +1,21 @@
+services:
+  cash-flow:
+    image: cash-flow:0.9.0
+    container_name: cash-flow
+    restart: unless-stopped
+    user: "101:101"
+    ports:
+      - "127.0.0.1:8087:8080"
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://127.0.0.1:8080/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
