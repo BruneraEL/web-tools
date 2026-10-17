@@ -102,6 +102,11 @@ const cartoes = [
   vencimentoDia: 17
 },
 {
+  nome: "Itaú Visa - Empresas",
+  melhorDiaCompra: 8,
+  vencimentoDia: 17
+},
+{
   nome: "Itaú Visa",
   melhorDiaCompra: 21,
   vencimentoDia: 28
@@ -191,7 +196,8 @@ document.getElementById("melhor").innerHTML = `
     const medalha =
       index === 0 ? "🥇" :
       index === 1 ? "🥈" :
-      "🥉";
+      index === 2 ? "🥉" :
+      `${index + 1}º`;
 
 htmlRanking += `
   <div class="rank-item">

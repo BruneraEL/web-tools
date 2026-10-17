@@ -8,10 +8,10 @@ servidor.
 
 - URL privada: `https://bddha-lab01.tail97ab45.ts.net/cash-flow/`
 - Container: `cash-flow`
-- Imagem: `cash-flow:1.0.0`
+- Imagem: `cash-flow:1.1.0`
 - Porta: `127.0.0.1:8087` para `8080` no container
 - Gateway: Nginx do host em `/cash-flow/`
-- Cache offline: `cash-flow-lab01-v3`
+- Cache offline: `cash-flow-lab01-v4`
 
 ## Operação
 
