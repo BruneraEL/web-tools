@@ -1,6 +1,6 @@
 {
-  "name": "Fluxo de Caixa",
-  "short_name": "Financeiro",
+  "name": "Cash Flow",
+  "short_name": "Cash Flow",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#0f1115",
@@ -8,8 +8,8 @@
   "description": "Melhor cartão para comprar hoje",
   "icons": [
     {
-      "src": "icon.png",
-      "sizes": "512x512",
+      "src": "./icon.png",
+      "sizes": "1254x1254",
       "type": "image/png"
     }
   ]

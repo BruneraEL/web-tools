@@ -1,6 +1,6 @@
 services:
   cash-flow:
-    image: cash-flow:1.1.0
+    image: cash-flow:1.1.1
     container_name: cash-flow
     restart: unless-stopped
     user: "101:101"

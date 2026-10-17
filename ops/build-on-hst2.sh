@@ -2,7 +2,7 @@
 set -euo pipefail
 
 SOURCE_DIR="${1:-/tmp/cash-flow-release}"
-OUTPUT="${2:-/tmp/cash-flow-1.1.0-image.tar.gz}"
+OUTPUT="${2:-/tmp/cash-flow-1.1.1-image.tar.gz}"
 TEST_CONTAINER=cash-flow-build-test
 
 cleanup() {
@@ -10,7 +10,7 @@ cleanup() {
 }
 trap cleanup EXIT
 
-docker build --pull -t cash-flow:1.1.0 "$SOURCE_DIR"
+docker build --pull -t cash-flow:1.1.1 "$SOURCE_DIR"
 
 docker run -d --name "$TEST_CONTAINER" \
   --user 101:101 \
@@ -19,7 +19,7 @@ docker run -d --name "$TEST_CONTAINER" \
   --security-opt no-new-privileges \
   --cap-drop ALL \
   -p 127.0.0.1:18087:8080 \
-  cash-flow:1.1.0 >/dev/null
+  cash-flow:1.1.1 >/dev/null
 
 for _ in $(seq 1 20); do
   if [[ "$(docker inspect --format '{{.State.Health.Status}}' "$TEST_CONTAINER")" == "healthy" ]]; then
@@ -34,9 +34,9 @@ curl --fail --silent --show-error http://127.0.0.1:18087/ >/dev/null
 curl --fail --silent --show-error http://127.0.0.1:18087/manifest.json >/dev/null
 curl --fail --silent --show-error http://127.0.0.1:18087/service-worker.js >/dev/null
 
-docker save cash-flow:1.1.0 | gzip -1 > "$OUTPUT"
+docker save cash-flow:1.1.1 | gzip -1 > "$OUTPUT"
 chmod 644 "$OUTPUT"
 
-docker image inspect --format 'image={{.RepoTags}} id={{.Id}} architecture={{.Architecture}}' cash-flow:1.1.0
+docker image inspect --format 'image={{.RepoTags}} id={{.Id}} architecture={{.Architecture}}' cash-flow:1.1.1
 sha256sum "$OUTPUT"
 echo "Imagem validada e salva em $OUTPUT"
